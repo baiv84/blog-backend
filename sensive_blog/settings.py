@@ -10,7 +10,7 @@ COMPANY_COORDINATES = [55.751244, 37.618423]
 
 ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", [])
 
-SECRET_KEY = env.str("SECRET_KEY", "REPLACE_ME")
+SECRET_KEY = env.str("SECRET_KEY", "apollo84")
 
 DEBUG = env.bool("DEBUG", True)
 
