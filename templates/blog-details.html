@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{% static 'css/styles.min.css' %}">
 </head>
 <body>
-    <!--================Header Menu Area =================-->
+  <!--================Header Menu Area =================-->
     <header class="header_area">
         <div class="main_menu">
           <nav class="navbar navbar-expand-lg navbar-light">
@@ -65,7 +65,11 @@
           <div class="row">
             <div class="col-lg-8">
               <div class="main_blog_details">
-                <img class="img-fluid" src="{% static 'img/blog/blog4.png' %}" alt="">
+                {% if post.image_url %}
+                    <img class="img-fluid" src={{post.image_url}} alt="">
+                {% else %}
+                    <img class="img-fluid" src="{% static 'img/banner/blog.png' %}" alt="">
+                {% endif %}
                 <h4>{{post.title}}</h4>
                 <div class="user_details">
                   <div class="mt-sm-0 mt-3">
@@ -113,7 +117,6 @@
                 </div>	                                            				
               </div>
             </div>
-  
   
             <!-- Start Blog Post Siddebar -->
             <div class="col-lg-4 sidebar-widgets">
