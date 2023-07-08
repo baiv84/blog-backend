@@ -6,11 +6,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    {% if post.title %}
-      <title>{{post.title}}</title>
-    {% else %}
-      <title>{{page_title}}</title>
-    {% endif %}
+    <title>{% block title %}{% endblock %}</title>
+    
     <link rel="icon" type="image/png" href="{% static 'img/favicon.ico' %}"/>
     <link rel="stylesheet" href="{% static 'css/styles.min.css' %}">
   </head>
