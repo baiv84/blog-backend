@@ -10,6 +10,7 @@ from sensive_blog.settings import COMPANY_COORDINATES
 
 
 def serialize_post(post):
+    """Post data serializer"""
     return {
         "title": post.title,
         "text": post.text,
