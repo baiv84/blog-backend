@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 
 
 class Post(models.Model):
+    """Post model implementation"""
     title = models.CharField("Заголовок", max_length=200)
     text = models.TextField("Текст")
     slug = models.SlugField("Название в виде url", max_length=200)
@@ -22,18 +23,22 @@ class Post(models.Model):
         blank=True)
 
     def __str__(self):
+        """Post model string representation"""
         return self.title
 
     def get_absolute_url(self):
+        """Get absolute URL"""
         return reverse('post_detail', args={'slug': self.slug})
 
     class Meta:
+        """Setup meta class"""
         ordering = ['-published_at']
         verbose_name = 'пост'
         verbose_name_plural = 'посты'
 
 
 class Comment(models.Model):
+    """Comment model implementation"""
     post = models.ForeignKey(
         "Post",
         on_delete=models.CASCADE,
@@ -47,9 +52,11 @@ class Comment(models.Model):
     published_at = models.DateTimeField("Дата и время публикации")
 
     def __str__(self):
+        """Comment model string representation"""
         return f"{self.author.username} under {self.post.title}"
 
     class Meta:
+        """Setup meta class"""
         ordering = ['published_at']
         verbose_name = 'комментарий'
         verbose_name_plural = 'комментарии'

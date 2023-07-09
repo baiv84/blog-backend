@@ -25,15 +25,14 @@ def serialize_post(post):
 def index(request):
     """Main page representation view"""
     all_posts = Post.objects.prefetch_related('author')
-    popular_posts = all_posts.annotate(likes_count=Count('likes')).order_by('-likes_count')[:3]
+    popular_posts = all_posts.annotate(likes_count=Count('likes')) \
+                             .order_by('-likes_count')[:3]
     fresh_posts = all_posts.order_by('-published_at')[:5]
-
     context = {
         "page_title": "Main page",
         "most_popular_posts": [serialize_post(post) for post in popular_posts],
         "fresh_posts": [serialize_post(post) for post in fresh_posts],
     }
-
     return render(request, 'index.html', context)
 
 
@@ -48,7 +47,7 @@ def post_detail(request, slug):
             "published_at": comment.published_at,
             "author": comment.author.username,
         })
- 
+
     serialized_post = {
         "title": post.title,
         "text": post.text,
