@@ -105,7 +105,3 @@ MEDIA_URL = os.getenv('MEDIA_URL', '/media/')
 INTERNAL_IPS = [
     '127.0.0.1',
 ]
-
-print('STATIC_URL', STATIC_URL)
-print('STATICFILES_DIRS', STATICFILES_DIRS)
-print('STATIC_ROOT', STATIC_ROOT)
